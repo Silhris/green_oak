@@ -1,1 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+@import "primeicons/primeicons.css";
+
+body {
+  margin: 0;
+}
+
+#top-banner {
+  a, ul {
+    background-color: transparent !important;
+  }
+  span {
+    color: #FFF;
+    font-size: 12px;
+  }
+}
+
+// Affecte le contenu associé à la route en cours
+#content + * {
+  background-color: pink;
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: calc( 100vh - 74px );
+}

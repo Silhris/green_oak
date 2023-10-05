@@ -1,0 +1,16 @@
+.flex-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-container > :not(.scrollable):not(.non-scrollable) {
+  flex-shrink: 0;
+}
+
+.flex-container > .scrollable, .non-scrollable {
+  flex-grow: 1;
+}
+
+.non-scrollable {
+  overflow: hidden;
+}
