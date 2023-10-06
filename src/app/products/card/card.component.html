@@ -1,0 +1,19 @@
+<div class="grid">
+  <div *ngFor="let product of products" class="col-4">
+    <p-card [header]="product.name" subheader="{{product.price / 100 | currency:'EUR':'symbol':'1.2-2'}}" [style]="{ width: '360px' }">
+      <div class="grid">
+        <div class="col-6">
+          <p-image [src]="product.image" [alt]="product.name" [previewImageSrc]="product.image" width="125" [preview]="true"></p-image>
+        </div>
+        <div class="col-6">
+          <p>
+            {{product.description}}
+          </p>
+        </div>
+      </div>
+      <ng-template pTemplate="footer">
+        <p-button routerLink="{{product.id}}" label="Acheter" styleClass="p-button-lg" icon="pi pi-shopping-cart"></p-button>
+      </ng-template>
+    </p-card>
+  </div>
+</div>

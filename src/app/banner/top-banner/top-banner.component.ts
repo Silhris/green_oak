@@ -17,9 +17,9 @@ import { TabMenuModule } from 'primeng/tabmenu';
 export class TopBannerComponent implements OnInit {
   private items: MenuItem[] = [
      { label: 'Accueil', icon : 'pi pi-home', routerLink: 'showcase' },
-     { label: 'Galerie', icon: 'pi pi-shopping-cart', routerLink: 'gallery' },
+     { label: 'Galerie', icon: 'pi pi-images', routerLink: 'gallery' },
      { label: 'Produits', icon: 'pi pi-shopping-cart', routerLink: 'products' },
-     { label: 'Services', icon: 'pi pi-shopping-cart', routerLink: 'services' },
+     { label: 'Services', icon: 'pi pi-info-circle', routerLink: 'services' },
      { label: 'Contact', icon: 'pi pi-pencil', routerLink: 'contact' }
   ];
   private activeItem!: MenuItem;

@@ -1,1 +1,19 @@
-<p>products works!</p>
+<div class="card flex justify-content-center">
+  <p-accordion [activeIndex]="0">
+    <p-accordionTab header="Arbres truffiers">
+      <app-card [products]="plants_truffiers"></app-card>
+    </p-accordionTab>
+    <p-accordionTab header="Conifères">
+      <app-card [products]="coniferes"></app-card>
+    </p-accordionTab>
+    <p-accordionTab header="Quercus">
+      <app-card [products]="quercus"></app-card>
+    </p-accordionTab>
+    <p-accordionTab header="Arbres fruitiers">
+      <app-card [products]="arbres_fruitiers"></app-card>
+    </p-accordionTab>
+    <p-accordionTab header="Arbustes fruitiers">
+      <app-card [products]="arbustes_fruitiers"></app-card>
+    </p-accordionTab>
+  </p-accordion>
+</div>
