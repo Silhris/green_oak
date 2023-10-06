@@ -11,7 +11,10 @@ import { TabMenuModule } from 'primeng/tabmenu';
     CommonModule,
     TabMenuModule
   ],
-  templateUrl: './top-banner.component.html',
+  template: `<div id="top-banner-background">
+    <div id="overlay-text">Green Oak Corporation</div>
+    <p-tabMenu [model]="getItems()" [activeItem]="getActiveItem()"></p-tabMenu>
+  </div>`,
   styleUrls: ['./top-banner.component.less'],
 })
 export class TopBannerComponent implements OnInit {

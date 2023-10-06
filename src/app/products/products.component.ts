@@ -15,8 +15,7 @@ import { CardComponent } from '@app/products/card/card.component';
     CardComponent,
     CommonModule
   ],
-  templateUrl: './products.component.html',
-  styleUrls: ['./products.component.less']
+  templateUrl: './products.component.html'
 })
 export class ProductsComponent implements OnInit {
   private products!: Product[];

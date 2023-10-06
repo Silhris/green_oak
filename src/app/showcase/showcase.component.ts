@@ -5,8 +5,7 @@ import { CommonModule } from '@angular/common';
   selector: 'app-showcase',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './showcase.component.html',
-  styleUrls: ['./showcase.component.less']
+  templateUrl: './showcase.component.html'
 })
 export class ShowcaseComponent {
 

@@ -1,1 +1,38 @@
-<p>contact works!</p>
+
+
+<form [formGroup]="formGroup" (ngSubmit)="submitForm()">
+  <div class="grid">
+    <div class="col-6 p-3">
+      <input class="flex flex-initial w-12" pInputText placeholder="Nom" formControlName="lastName"/>
+      <small class="flex flex-initial error" *ngIf="submitted && !formGroup.controls['lastName'].valid || !formGroup.controls['lastName'].valid&&formGroup.controls['lastName'].dirty">Le nom est requis</small>
+    </div>
+    <div class="col-6 p-3">
+      <input class="flex flex-initial w-12"  pInputText placeholder="Prénom" formControlName="firstName"/>
+      <small class="flex flex-initial error" *ngIf="submitted && !formGroup.controls['firstName'].valid || !formGroup.controls['firstName'].valid&&formGroup.controls['firstName'].dirty">Le prénom est requis</small>
+    </div>
+    <div class="col-6 p-3">
+      <input class="flex flex-initial w-12" pInputText placeholder="Courriel" formControlName="email"/>
+      <small class="flex flex-initial error" *ngIf="submitted && !formGroup.controls['email'].valid || !formGroup.controls['email'].valid&&formGroup.controls['email'].dirty">L'email est requis</small>
+    </div>
+    <div class="col-6 p-3">
+      <input class="flex flex-initial w-12" pInputText placeholder="Téléphone" formControlName="phone"/>
+      <small class="flex flex-initial error" *ngIf="submitted && !formGroup.controls['phone'].valid || !formGroup.controls['phone'].valid&&formGroup.controls['phone'].dirty">Le téléphone est requis</small>
+    </div>
+
+    <div class="col-4 p-3">
+      <p-multiSelect class="flex flex-initial" defaultLabel="Choix des catégories" [options]="categories" formControlName="selectedCategories" optionLabel="name"></p-multiSelect>
+      <small class="flex flex-initial error" *ngIf="submitted && !formGroup.controls['selectedCategories'].valid || !formGroup.controls['selectedCategories'].valid&&formGroup.controls['selectedCategories'].dirty">
+        Au moins une catégorie est requis
+      </small>
+    </div>
+  </div>
+
+
+  <div class="p-inputgroup col">
+    <p-editor placeholder="Votre message" formControlName="text" class="w-12" [style]="{ height: '320px' }"></p-editor>
+    <small class="flex flex-initial error" *ngIf="submitted && !formGroup.controls['text'].valid || !formGroup.controls['text'].valid&&formGroup.controls['text'].dirty">
+      Un message est requis
+    </small>
+  </div>
+  <p-button type="submit" class="ml-2 mt-3">Envoyer</p-button>
+</form>

@@ -59,7 +59,7 @@ export class ProductsService {
       description: '' },
     { id: 26, category: 'arbustes_fruitiers', name: 'Kiwi arguta Issai - arbuste fruitier', image: 'assets/images/products/arbustes_fruitiers/acheter-plante-kiwi-arguta-issai-45cm-o13-arbuste-fruitier-plante-dexterieur-594186.jpg', price: 2640,
       description: 'La framboise "Rubus Idaeus Malling Promise" est une variété connue, auto-pollinisante, avec des fleurs blanches et des fruits rouges délicieux, cultivée de manière biologique dans un pot en plastique recyclé.' },
-    { id: 27, category: 'arbustes_fruitiers', name: 'Murier navaho - arbuste fruitier', image: 'assets/images/products/arbustes_fruitiers/', price: 2640,
+    { id: 27, category: 'arbustes_fruitiers', name: 'Murier navaho - arbuste fruitier', image: 'assets/images/products/arbustes_fruitiers/acheter-plante-murier-navaho-45cm-o13-arbuste-fruitier-274240.jpg', price: 2640,
       description: 'Rubus Navaho® Bigandearly® est une variété de murier sans épines, très productive et produisant des mûres tout l\'été jusqu\'en octobre.' },
     { id: 28, category: 'arbustes_fruitiers', name: 'Vigne Pinot Noir - ↨65cm - Ø19 - arbuste fruitier', image: 'assets/images/products/arbustes_fruitiers/acheter-plante-vignepinot-noir-65cm-o19-arbuste-fruitier-749133.jpg', price: 4279,
       description: 'La vigne "Pinot Noir" est un cépage bleu qui produit du vin rouge et le raisin de Pixie Grape est un mutant naturel de Vitus Vinifera "Pinot Meunier" qui produit des petits raisins dès la première année.' },
@@ -71,5 +71,9 @@ export class ProductsService {
 
   getProducts() {
     return this.products;
+  }
+
+  getProduct(id: any): Product {
+    return this.products.find((product) => product.id === parseInt(id)) || { id: -1, category: '', name:'', description: '', image:'', price: 0};
   }
 }

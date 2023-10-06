@@ -1,3 +1,10 @@
-<a routerLink="/products">Retour aux produits</a>
-<p>details works!</p>
-<p-image [src]="product.image" [alt]="product.name" width="250" [preview]="true"></p-image>
+<h1>{{product.name}} - {{product.price / 100 | currency:'EUR':'symbol':'1.2-2'}}</h1>
+<div class="grid">
+  <p-image [src]="product.image" [alt]="product.name" class="col-7" [preview]="true"></p-image>
+  <p class="col-4">
+    {{product.description}}
+    <br>
+    <br>
+    <p-button label="Ajouter au panier" styleClass="p-button-lg" icon="pi pi-shopping-cart"></p-button>
+  </p>
+</div>

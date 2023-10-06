@@ -20,7 +20,7 @@ const routes: Routes = [
   //{ path: 'products/:id', component: TODO }
   // Redirige toutes les routes invalides vers l'accueil
   // A placer en dernier pour qu'Angular puisse vérifier chacune des précédentes routes
-  //{ path: '**', redirectTo: 'showcase' },
+  { path: '**', redirectTo: 'showcase' },
 ];
 
 @NgModule({

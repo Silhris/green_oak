@@ -18,8 +18,7 @@ import { Product } from '@app/models/product';
     ImageModule,
     RouterLink
   ],
-  templateUrl: './card.component.html',
-  styleUrls: ['./card.component.less']
+  templateUrl: './card.component.html'
 })
 export class CardComponent {
   @Input() products!: Product[];

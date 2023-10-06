@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
   selector: 'app-bottom-banner',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './bottom-banner.component.html',
+  template: 'Green Oak Corporate – 2023',
   styleUrls: ['./bottom-banner.component.less']
 })
 export class BottomBannerComponent {

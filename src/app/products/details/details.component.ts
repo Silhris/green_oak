@@ -1,28 +1,32 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
+import { ButtonModule } from 'primeng/button';
 import { ImageModule } from 'primeng/image';
 
 import { Product } from '@app/models/product';
+import { ProductsService } from '@app/models/service/products.service';
 
 @Component({
   selector: 'app-details',
   standalone: true,
   imports: [
+    ButtonModule,
     CommonModule,
-    ImageModule,
-    RouterLink
+    ImageModule
   ],
-  templateUrl: './details.component.html',
-  styleUrls: ['./details.component.less']
+  templateUrl: './details.component.html'
 })
-export class DetailsComponent {
-  product: Product = {
-    id: 1,
-    category: 'plants_truffiers',
-    name: 'Chêne Vert Truffier Tuber Mélanosporum (quercus ilex)',
-    image: 'assets/images/products/truffiers/chene-truffier-pubescent-tuber-melanosporum-quercus-pubescens.jpg', price: 1595,
-    description: 'Jeune plant truffier de chêne pubescent (Quercus pubescens) aussi appelé chêne blanc mycorhizé par tuber mélanosporum de 2 ans en godets anti-chignon de 450cc. Contrôlé et certifié par le CTIFL.'
-  };
+export class DetailsComponent implements OnInit {
+  product!: Product;
+
+  constructor(
+    private productsService: ProductsService,
+    private router: ActivatedRoute) {}
+
+  ngOnInit() {
+    const id = this.router.snapshot.paramMap.get('id');
+    this.product = this.productsService.getProduct(id);
+  }
 }
