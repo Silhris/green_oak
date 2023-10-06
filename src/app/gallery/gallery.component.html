@@ -1,1 +1,10 @@
-<p>gallery works!</p>
+<p-galleria [value]="images" [numVisible]="3">
+  <ng-template pTemplate="item" let-item>
+    <img [src]="item.previewImageSrc" [alt]="item.alt" [pTooltip]="item.title" class="w-4"/>
+  </ng-template>
+  <ng-template pTemplate="thumbnail" let-item>
+    <div class="grid grid-nogutter justify-content-center">
+      <img [src]="item.thumbnailImageSrc" class="w-4" />
+    </div>
+  </ng-template>
+</p-galleria>
