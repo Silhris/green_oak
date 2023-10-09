@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 
-import { Observable, of } from 'rxjs';
+import { Observable, of, throwError  } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
 import { Message } from '@app/models/message';
@@ -22,31 +22,27 @@ export class MessagesService {
     return this.http.get<Message[]>(this.url);
   }
 
-  postMessage(message: Message): void {
-    this.http.post(this.url, message, this.httpOptions).pipe(
-      tap((message: any) => console.log('added Message with text=' + message.text)),
-      catchError(this.handleError<Message>('addMessage'))
-    );
+  postMessage(message: Message): Observable<Message> {
+    const stringifyMessage = JSON.stringify(message);
+    return this.http.post<Message>(this.url, stringifyMessage, this.httpOptions);
+    /* this.http.post(this.url, stringifyMessage, this.httpOptions).pipe(
+      tap((message: any) => console.log(`added Message with text= ${message.text}`)),
+      catchError((error) => this.handleError(error))
+    ); */
   }
 
-  /**
-   * Handle Http operation that failed.
-   * Let the app continue.
-   *
-   * @param operation - name of the operation that failed
-   * @param result - optional value to return as the observable result
-   */
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-
-      // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
-
-      // TODO: better job of transforming error for user consumption
-      console.log(`${operation} failed: ${error.message}`);
-
-      // Let the app keep running by returning an empty result.
-      return of(result as T);
-    };
+  // source: https://angular.io/guide/http-handle-request-errors
+  private handleError(error: HttpErrorResponse) {
+    if (error.status === 0) {
+      // A client-side or network error occurred. Handle it accordingly.
+      console.error('An error occurred:', error.error);
+    } else {
+      // The backend returned an unsuccessful response code.
+      // The response body may contain clues as to what went wrong.
+      console.error(
+        `Backend returned code ${error.status}, body was: `, error.error);
+    }
+    // Return an observable with a user-facing error message.
+    return throwError(() => new Error('Something bad happened; please try again later.'));
   }
 }

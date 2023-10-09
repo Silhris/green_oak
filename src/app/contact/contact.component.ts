@@ -5,7 +5,10 @@ import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, 
 import { ButtonModule } from 'primeng/button';
 import { EditorModule } from 'primeng/editor';
 import { InputTextModule } from 'primeng/inputtext';
+import { MessageService as PrimeNgMessageService } from 'primeng/api';
 import { MultiSelectModule } from 'primeng/multiselect';
+import { ToastModule } from 'primeng/toast';
+import { v4 as uuid } from 'uuid';
 
 import { Category } from '@app/models/category';
 import { Message } from '@app/models/message';
@@ -22,8 +25,10 @@ import { MessagesService } from '@app/models/service/messages.service';
     FormsModule,
     InputTextModule,
     MultiSelectModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ToastModule
   ],
+  providers: [PrimeNgMessageService],
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.less']
 })
@@ -45,10 +50,34 @@ export class ContactComponent implements OnInit {
   selectedCategories!: Category[];
 
   constructor(private formBuilder: FormBuilder,
+              private primeNgMessageService: PrimeNgMessageService,
               private messagesService: MessagesService) { }
 
   ngOnInit() {
-    this.messagesService.getMessages().subscribe(messages => console.log(messages));
+    this.resetData();
+  }
+
+  submitForm() {
+    this.submitted = true;
+    if (this.formGroup.status === "VALID") {
+      const message: Message = {
+        id: uuid(),
+        lastName: this.formGroup.controls['lastName'].value,
+        firstName: this.formGroup.controls['firstName'].value,
+        email: this.formGroup.controls['email'].value,
+        phone: this.formGroup.controls['phone'].value,
+        text: this.formGroup.controls['text'].value,
+        selectedCategories: this.formGroup.controls['selectedCategories'].value
+      };
+      this.messagesService.postMessage(message).subscribe((message) => {
+        this.primeNgMessageService.add({ severity: 'success', summary: 'Success', detail: 'Votre message a bien été envoyé' });
+      });
+      this.resetData();
+    }
+  }
+
+  resetData() {
+    this.submitted = false;
     this.formGroup = this.formBuilder.group({
       lastName: new FormControl('', [Validators.required]),
       firstName: new FormControl('', [Validators.required]),
@@ -57,20 +86,5 @@ export class ContactComponent implements OnInit {
       text: new FormControl('', [Validators.required]),
       selectedCategories: new FormControl('', [Validators.required]),
     });
-  }
-
-  submitForm() {
-    this.submitted = true;
-    if (this.formGroup.status === "VALID") {
-      const message: Message = {
-        lastName: this.formGroup.controls['lastName'].value,
-        firstName: this.formGroup.controls['firstName'].value,
-        email: this.formGroup.controls['email'].value,
-        phone: this.formGroup.controls['phone'].value,
-        text: this.formGroup.controls['text'].value,
-        selectedCategories: this.formGroup.controls['selectedCategories'].value
-      };
-      this.messagesService.postMessage(message);
-    }
   }
 }
