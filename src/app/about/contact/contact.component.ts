@@ -10,9 +10,9 @@ import { MultiSelectModule } from 'primeng/multiselect';
 import { ToastModule } from 'primeng/toast';
 import { v4 as uuid } from 'uuid';
 
-import { Category } from '@app/models/category';
-import { Message } from '@app/models/message';
-import { MessagesService } from '@app/models/service/messages.service';
+import { Category } from '@models/category';
+import { Message } from '@models/message';
+import { MessagesService } from '@models/service/messages.service';
 
 
 @Component({

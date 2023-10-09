@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { AccordionModule } from 'primeng/accordion';
 
-import { Product } from '@app/models/product';
-import { ProductsService } from '@app/models/service/products.service';
+import { Product } from '@models/product';
+import { ProductsService } from '@models/service/products.service';
 import { CardComponent } from '@app/marketplace/products/card/card.component';
 
 @Component({

@@ -22,7 +22,7 @@ export class TopBannerComponent implements OnInit {
      { label: 'Accueil', icon : 'pi pi-home', routerLink: 'lobby/showcase' },
      { label: 'Galerie', icon: 'pi pi-images', routerLink: 'showoff/gallery' },
      { label: 'Produits', icon: 'pi pi-shopping-cart', routerLink: 'marketplace/products' },
-     { label: 'Services', icon: 'pi pi-info-circle', routerLink: 'services' },
+     { label: 'Services', icon: 'pi pi-info-circle', routerLink: 'services/infos' },
      { label: 'Contact', icon: 'pi pi-pencil', routerLink: 'about/contact' }
   ];
   private activeItem!: MenuItem;

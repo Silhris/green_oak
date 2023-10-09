@@ -5,8 +5,8 @@ import { ActivatedRoute } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { ImageModule } from 'primeng/image';
 
-import { Product } from '@app/models/product';
-import { ProductsService } from '@app/models/service/products.service';
+import { Product } from '@models/product';
+import { ProductsService } from '@models/service/products.service';
 
 @Component({
   selector: 'app-details',

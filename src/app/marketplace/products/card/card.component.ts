@@ -6,7 +6,7 @@ import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { ImageModule } from 'primeng/image';
 
-import { Product } from '@app/models/product';
+import { Product } from '@models/product';
 
 @Component({
   selector: 'app-card',

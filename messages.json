@@ -75,6 +75,24 @@
           "code": "quercus"
         }
       ]
+    },
+    {
+      "id": "119b6555-5ff0-48ee-a66e-95b9cd01af90",
+      "lastName": "Crépu",
+      "firstName": "Alexandre",
+      "email": "acrepu@positivethinking.tech",
+      "phone": "0648152735",
+      "text": "<p>test 42</p>",
+      "selectedCategories": [
+        {
+          "name": "Quercus",
+          "code": "quercus"
+        },
+        {
+          "name": "Arbres fruitiers",
+          "code": "arbres_fruitiers"
+        }
+      ]
     }
   ]
 }

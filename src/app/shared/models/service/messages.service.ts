@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { Observable, of, throwError  } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
-import { Message } from '@app/models/message';
+import { Message } from '@models/message';
 
 @Injectable({
   providedIn: 'root'

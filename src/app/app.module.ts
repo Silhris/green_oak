@@ -5,8 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from '@app/app-routing.module';
 import { AppComponent } from '@app/app.component';
-import { TopBannerComponent } from '@app/banner/top-banner/top-banner.component';
-import { BottomBannerComponent } from '@app/banner/bottom-banner/bottom-banner.component';
+import { SharedModule } from './shared/shared.module';
 
 
 @NgModule({
@@ -15,11 +14,10 @@ import { BottomBannerComponent } from '@app/banner/bottom-banner/bottom-banner.c
   ],
   imports: [
     AppRoutingModule,
-    BottomBannerComponent,
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    TopBannerComponent
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
